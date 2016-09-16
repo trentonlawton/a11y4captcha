@@ -63,5 +63,21 @@ The data flow in Legacy Captcha system relies on a user submitting a string for 
 
 4.Data Flow (Accessible Legacy Captcha)
 
-As described in the data flow section  the A.T. users Captcha experience is limited to both on load and refresh. In order to allow a low vision user to interact with Legacy Captcha we have to build onto the existing functionality of the Captcha form. This is done by introducing a new path the that user can go down to interact with the ui. This path is the accessibility path and to allow it work in our legacy system we have to make some changes to our UI and introduce additional logic to the Captcha data flow. Those changes include introducing a accessibility button,trigger,or link that will initialize validation for an accessible session. Giving the user a token that confirms that they are authorized for an accessible session. Lastly, a button that gets the string equivalent of a legacy Captcha image.
+As described in the data flow section the A.T. users Captcha experience is limited to both on load and refresh. In order to allow a low vision user to interact with Legacy Captcha we have to build onto the existing functionality of the Captcha form. Introducing a new path does this that user can go down to interact with the ui. This path is the accessibility path and to allow it work in our legacy system we have to make some changes to our UI and introduce additional logic to the Captcha data flow. Those changes include introducing a accessibility button,trigger,or link that will initialize validation for an accessible session. Giving the user a token that confirms that they are authorized for an accessible session. Lastly,a button that gets the text contents of a Captcha image.
+
+
+[IMG 2 Accessible Legacy Captcha Data Flow]
+1.Accessible Legacy Captcha request Captcha
+	Captcha Gen/api returns the Captcha image
+
+2. Accessible Captcha is now awaiting user input 
+3.User clicks accessible button
+	1.function checks if the user accessible
+		a.If user accessible == true get Captcha answer from Captcha gen/api(go to )
+		b. If user accessible == false initialize a a11y session module(Go to 4)
+4. Initialize A11y session module
+	1.perform auditory test to see if user if human or bot
+	2. user submits answer to auditory test
+		a.if answer == true grant the user with an accessible session
+		b if answer == false perform auditory test again
 
